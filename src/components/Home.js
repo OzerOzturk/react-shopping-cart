@@ -1,9 +1,22 @@
 import React from "react";
+import { CartState } from "../context/Context";
+import SingleProduct from "./SingleProduct";
+import "./styles.css";
 
 const Home = () => {
+  const {
+    state: { products },
+  } = CartState();
+  //console.log(state);
+
   return (
-    <div>
-      <h1>this is home</h1>
+    <div className="home">
+      {/* {<Filters/>} */}
+      <div className="productContainer">
+        {products.map((prod) => {
+          return <SingleProduct prod={prod} key={prod.id} />;
+        })}
+      </div>
     </div>
   );
 };
